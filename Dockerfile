@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 ENV P4P_MAXCACHEAGEDAYS=30 \
     P4P_MAXCACHESIZE=10GB \
     P4USER=p4admin \
-    P4PPORT=localhost:1666 \
+    P4PPORT=localhost:1667 \
     P4PTARGET=localhost:1666 \
     P4PFSIZE=0 \
     P4DEBUG=0 \
@@ -15,7 +15,6 @@ RUN apt-get update
 RUN apt-get install -y wget
 RUN apt-get install -y gnupg
 RUN apt-get install -y openssl
-RUN apt-get install -y vim
 
 RUN echo deb http://package.perforce.com/apt/ubuntu bionic release> /etc/apt/sources.list.d/perforce.list
 RUN wget -qO - https://package.perforce.com/perforce.pubkey | apt-key add -

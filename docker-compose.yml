@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    image: p4proxy
+    container_name: p4proxy
+#    image: wata516/p4d
+    restart: always
+    environment:
+      P4PPORT: tcp::1667
+      P4PTARGET: 192.168.48.2:1666
+    working_dir: $PWD
+    ports: 
+      - "1667:1667"
+    networks:
+      - perforce-network
+    volumes:
+      - $PWD/p4p/ssl:/p4/ssl
+      - $PWD/p4p/cache:/p4/cache
+networks:
+  perforce-network:
+    external: true
