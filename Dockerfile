@@ -24,7 +24,7 @@ RUN apt-get update
 RUN apt-get install -y helix-proxy
 RUN apt-get install -y helix-cli
 
-EXPOSE 1666
+EXPOSE 1667
 
 RUN mkdir -p /p4/cache && \
     mkdir -p /p4/logs && \
@@ -33,10 +33,8 @@ RUN mkdir -p /p4/cache && \
 
 VOLUME [ "/p4/cache", "/p4/logs", "/p4/ssl", "/p4/config" ]
 
-ENV SERVER_NAME p4
-ENV P4PORT 1666
-ENV P4USER p4admin
-ENV P4PASSWD p4admin@12345
+ENV P4PPORT ssl::1667
+ENV P4PTARGET ssl:localhost:1666
 
 ADD ./run.sh /
 CMD ["/run.sh"]
